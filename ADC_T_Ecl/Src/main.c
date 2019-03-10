@@ -280,16 +280,11 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
  * This function separates ADC1 and ADC2 values
  */
 void calc(){
-    if (busy==1)
-    {
-	    return;
-    }
-    busy=1;
-
+    
     //separating values of the two ADCs
     for(int i=0;i<ADCSAMPLE;i++)
     {
-	    Voltage_val[i]=ADC1ConvertedValues[i]&0xffff;
+	Voltage_val[i]=ADC1ConvertedValues[i]&0xffff;
         Current_val[i]=(ADC1ConvertedValues[i]&0xffff0000)>>16;
 
     }
